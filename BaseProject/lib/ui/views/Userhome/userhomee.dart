@@ -154,38 +154,86 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
             physics: NeverScrollableScrollPhysics(),
             controller: tanc,
             children: <Widget>[
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
-              Container(
-                child: Center(
-                  child: (Text("1")),
-                ),
-              ),
+              dishes(viewModel, 0),
+              dishes(viewModel, 1),
+              dishes(viewModel, 2),
+              dishes(viewModel, 3),
+              dishes(viewModel, 4),
+              dishes(viewModel, 5),
             ],
           ),
         ));
   }
+
+  Widget dishes(userhomeviewmodel model, int indexx) => Padding(
+      padding: const EdgeInsets.only(bottom: 0),
+      child: Container(
+        child: model.tablemenulist.restaurantId != null
+            ? ListView.builder(
+                itemCount: model
+                    .tablemenulist.tableMenuList[indexx].categoryDishes.length,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  model.newcategoryDishes =
+                      model.tablemenulist.tableMenuList[indexx].categoryDishes;
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 0,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 2.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            model.newcategoryDishes[index].dishName,
+                            style: TextStyle(
+                                color: AppCommonColors.myCustomBlack,
+                                fontFamily: "poppins",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 14.0),
+                            child: Text(
+                              model.newcategoryDishes[index].dishCurrency,
+                              style: TextStyle(
+                                  color: AppCommonColors.myCustomBlack,
+                                  fontFamily: "poppins",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 14.0),
+                            child: Text(
+                              model.newcategoryDishes[index].dishDescription,
+                              style: TextStyle(
+                                  color: AppCommonColors.myCustomBlack,
+                                  fontFamily: "poppins",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                })
+            : Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+      ));
 }
