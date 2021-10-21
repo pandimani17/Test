@@ -22,4 +22,10 @@ class userhomeviewmodel extends BaseViewModel {
   Notify() {
     notifyListeners();
   }
+
+  controller(TabController tab) {
+    tab.addListener(() {
+      notifyListeners();
+    });
+  }
 }

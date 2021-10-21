@@ -18,10 +18,16 @@ class _userhomeeState extends State<userhomee>
   }
 
   @override
+  void dispose() {
+    tabcontroller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<userhomeviewmodel>.reactive(
         onModelReady: (userhomeviewmodel model) {
           model.Apicall();
+          model.controller(tabcontroller);
         },
         builder: (context, userhomeviewmodel model, child) =>
             AppMainLayout(tabcontroller),
@@ -151,7 +157,6 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
             ),
           ),
           body: new TabBarView(
-            physics: NeverScrollableScrollPhysics(),
             controller: tanc,
             children: <Widget>[
               dishes(viewModel, 0),
