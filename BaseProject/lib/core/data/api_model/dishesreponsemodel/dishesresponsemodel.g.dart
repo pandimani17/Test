@@ -123,6 +123,7 @@ CategoryDishes _$CategoryDishesFromJson(Map<String, dynamic> json) {
         json, 'dish_availability', (v) => val.dishAvailability = v as bool);
     $checkedConvert(json, 'dish_type', (v) => val.dishType = v as int);
     $checkedConvert(json, 'nexturl', (v) => val.nexturl = v as String);
+    $checkedConvert(json, 'quantity', (v) => val.quantity = v as int);
     $checkedConvert(
         json,
         'addon_cat',
@@ -164,6 +165,7 @@ Map<String, dynamic> _$CategoryDishesToJson(CategoryDishes instance) {
   writeNotNull('dish_availability', instance.dishAvailability);
   writeNotNull('dish_type', instance.dishType);
   writeNotNull('nexturl', instance.nexturl);
+  writeNotNull('quantity', instance.quantity);
   writeNotNull(
       'addon_cat', instance.addonCat?.map((e) => e?.toJson())?.toList());
   return val;

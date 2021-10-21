@@ -28,4 +28,30 @@ class userhomeviewmodel extends BaseViewModel {
       notifyListeners();
     });
   }
+
+   additem(int index1,int index2) {
+     int i = 0;
+    if(tablemenulist.tableMenuList[index1].categoryDishes[index2].quantity == null){
+      i= 1;
+    }else{
+      i = tablemenulist.tableMenuList[index1].categoryDishes[index2].quantity+1;
+    }
+    tablemenulist.tableMenuList[index1].categoryDishes[index2].quantity =i;
+    notifyListeners();
+
+
+
+  }
+
+  deleteitem(int indexx, int index) {
+    int i=0;
+    if(tablemenulist.tableMenuList[indexx].categoryDishes[index].quantity == null){
+      i= 0;
+    }else if(tablemenulist.tableMenuList[indexx].categoryDishes[index].quantity >0 ){
+      i = tablemenulist.tableMenuList[indexx].categoryDishes[index].quantity-1;
+    }
+    tablemenulist.tableMenuList[indexx].categoryDishes[index].quantity =i;
+    notifyListeners();
+
+  }
 }

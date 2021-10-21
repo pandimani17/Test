@@ -247,11 +247,15 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
                                       ),
                                       child: Row(
                                         children: [
-                                          Icon( Icons.remove, color: Colors.white, ),
+                                          InkWell(child: Icon( Icons.remove, color: Colors.white, ),onTap: (){
+                                            model.deleteitem(indexx,index)();
+                                          },),
                                           Spacer(),
-                                          Text("0",style: TextStyle(color: Colors.white,fontSize: 15),),
+                                          Text(model.newcategoryDishes[index].quantity == null ? "0" :model.newcategoryDishes[index].quantity.toString() ,style: TextStyle(color: Colors.white,fontSize: 15),),
                                           Spacer(),
-                                          Icon( Icons.add, color: Colors.white, ),
+                                          InkWell(child: Icon( Icons.add, color: Colors.white, ),onTap: (){
+                                            model.additem(indexx,index)();
+                                          },),
 
 
 

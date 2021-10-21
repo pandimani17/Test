@@ -80,6 +80,7 @@ class CategoryDishes {
   bool dishAvailability;
   int dishType;
   String nexturl;
+  int quantity;
   List<AddonCat> addonCat;
   @override
   List<Object> get props => [
@@ -93,7 +94,7 @@ class CategoryDishes {
         dishAvailability,
         dishType,
         nexturl,
-        addonCat
+        addonCat,
       ];
   factory CategoryDishes.fromJson(Map<String, dynamic> json) =>
       _$CategoryDishesFromJson(json);
