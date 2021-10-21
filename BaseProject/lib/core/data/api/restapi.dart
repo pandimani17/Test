@@ -8,7 +8,7 @@ import 'models/api_response.dart';
 class RestApi extends ApiResource {
   final Dio _dio = Dio();
 
-  Future<ApiResponse> getusers(url) async {
+  Future<ApiResponse> getdishes(url) async {
     ApiResponse apiResponse;
     Response response = await _dio.get(url);
     apiResponse = ApiResponse(data: response.data, headers: response.headers);

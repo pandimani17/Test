@@ -5,12 +5,11 @@ import 'package:newproject/core/data/api/models/api_response.dart';
 import '../restapi.dart';
 
 @singleton
-class Userapi extends ApiResource {
+class dishesapicall extends ApiResource {
   RestApi _restapi;
+  dishesapicall(RestApi restApi) : _restapi = restApi;
 
-  Userapi(RestApi restApi) : _restapi = restApi;
-
-  Future<ApiResponse> getusers(String url) {
-    return _restapi.getusers(this.getUrl(url));
+  Future<ApiResponse> getdishes() {
+    return _restapi.getdishes(this.getUrl());
   }
 }
