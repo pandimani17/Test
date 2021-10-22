@@ -74,7 +74,6 @@ flutter:
 
 
   assets:
-    - assets/sql/
     - resources/language/en.json
     - assets/images/firebase_logo.png
     - assets/images/popup_close.png
