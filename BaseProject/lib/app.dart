@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:newproject/localization/localisation.dart';
-import 'package:newproject/ui/views/Userhome/userhomee.dart';
+import 'package:newproject/ui/views/detailpage.dart';
 
 class App extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _ClaasAppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: userhomee(),
+      home: Detailpage(),
       locale: Locale("en"),
       localizationsDelegates: [
         DemoLocalizationsDelegate(),

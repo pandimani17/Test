@@ -1,33 +1,71 @@
 {
   "project_info": {
-    "project_number": "837945235332",
-    "project_id": "testing-d0973",
-    "storage_bucket": "testing-d0973.appspot.com"
+    "project_number": "94872076964",
+    "firebase_url": "https://newproject-cfcdb-default-rtdb.firebaseio.com",
+    "project_id": "newproject-cfcdb",
+    "storage_bucket": "newproject-cfcdb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:837945235332:android:dc37d11184152ff8796fd1",
+        "mobilesdk_app_id": "1:94872076964:android:d1be5d29552e7f67d79c31",
         "android_client_info": {
           "package_name": "com.example.newproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "837945235332-9t42vsafb86fg57c8695lb6r3ev86mau.apps.googleusercontent.com",
+          "client_id": "94872076964-3nsf2ji1d86jebr2bcj4nhn4j6iaa97c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newproject",
+            "certificate_hash": "a98403c111edc421ce0b83ac0af764c5b0d65780"
+          }
+        },
+        {
+          "client_id": "94872076964-39o28ototdk02p8214ju9br40nf0ki6s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBr0w9KjCX6kRx3AwaolN6N93ZyWeOMwB4"
+          "current_key": "AIzaSyCv79kJExvFRxYuPRuzkbq0VZliDOtJltQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "837945235332-9t42vsafb86fg57c8695lb6r3ev86mau.apps.googleusercontent.com",
+              "client_id": "94872076964-39o28ototdk02p8214ju9br40nf0ki6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94872076964:android:4f3dbba2584b1010d79c31",
+        "android_client_info": {
+          "package_name": "com.nine.fooddelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94872076964-39o28ototdk02p8214ju9br40nf0ki6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv79kJExvFRxYuPRuzkbq0VZliDOtJltQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94872076964-39o28ototdk02p8214ju9br40nf0ki6s.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
