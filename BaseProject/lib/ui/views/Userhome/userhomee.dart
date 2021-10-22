@@ -52,6 +52,9 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
                   Icons.shopping_cart,
                   color: AppCommonColors.myCustomBlack,
                 ),
+                onPressed: () {
+                  viewModel.navigatetoordersummary(context);
+                },
               ),
             ],
             bottom: TabBar(
@@ -197,95 +200,139 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 8.0,bottom: 15,left: 10),
+                      padding:
+                          const EdgeInsets.only(top: 8.0, bottom: 15, left: 10),
                       child: Padding(
-                        padding: const EdgeInsets.only(left:10.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Row(
                           children: [
                             Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  model.newcategoryDishes[index].dishName,
-                                  style: TextStyle(
-                                      color: AppCommonColors.myCustomBlack,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 15),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 14.0),
-                                  child: Text(
-                                    model.newcategoryDishes[index].dishCurrency+" "+model.newcategoryDishes[index].dishPrice.toString() ,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    model.newcategoryDishes[index].dishName,
                                     style: TextStyle(
                                         color: AppCommonColors.myCustomBlack,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 12),
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 15),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 14.0,right: 10),
-                                  child: Text(
-                                    model.newcategoryDishes[index].dishDescription,
-                                    style: TextStyle(
-                                        color: AppCommonColors.myCustomBlack,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 12),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 14.0),
+                                    child: Text(
+                                      model.newcategoryDishes[index]
+                                              .dishCurrency +
+                                          " " +
+                                          model.newcategoryDishes[index]
+                                              .dishPrice
+                                              .toString(),
+                                      style: TextStyle(
+                                          color: AppCommonColors.myCustomBlack,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12),
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top:8.0),
-                                  child: Container(
-                                    height: 30,
-                                      width:100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.green,
-                                          border: Border.all(
-                                            color: Colors.green[500],
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 14.0, right: 10),
+                                    child: Text(
+                                      model.newcategoryDishes[index]
+                                          .dishDescription,
+                                      style: TextStyle(
+                                          color: AppCommonColors.myCustomBlack,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Container(
+                                        height: 30,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                            color: Colors.green,
+                                            border: Border.all(
+                                              color: Colors.green[500],
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                        child: Row(
+                                          children: [
+                                            InkWell(
+                                              child: Icon(
+                                                Icons.remove,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: () {
+                                                model.deleteitem(
+                                                    indexx, index)();
+                                              },
+                                            ),
+                                            Spacer(),
+                                            Text(
+                                              model.newcategoryDishes[index]
+                                                          .quantity ==
+                                                      null
+                                                  ? "0"
+                                                  : model
+                                                      .newcategoryDishes[index]
+                                                      .quantity
+                                                      .toString(),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15),
+                                            ),
+                                            Spacer(),
+                                            InkWell(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: () {
+                                                model.additem(indexx, index)();
+                                              },
+                                            ),
+                                          ],
+                                        )),
+                                  ),
+                                  model.newcategoryDishes[index].addonCat !=
+                                          null
+                                      ? Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 14.0),
+                                          child: Text(
+                                            "Customizations Availbale",
+                                            style: TextStyle(
+                                                color: AppCommonColors
+                                                    .selectedcolor,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 12),
                                           ),
-                                          borderRadius: BorderRadius.all(Radius.circular(20))
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          InkWell(child: Icon( Icons.remove, color: Colors.white, ),onTap: (){
-                                            model.deleteitem(indexx,index)();
-                                          },),
-                                          Spacer(),
-                                          Text(model.newcategoryDishes[index].quantity == null ? "0" :model.newcategoryDishes[index].quantity.toString() ,style: TextStyle(color: Colors.white,fontSize: 15),),
-                                          Spacer(),
-                                          InkWell(child: Icon( Icons.add, color: Colors.white, ),onTap: (){
-                                            model.additem(indexx,index)();
-                                          },),
-
-
-
-                                        ],
-                                      )
-                                  ),
-                                ),
-                                model.newcategoryDishes[index].addonCat != null?Padding(
-                                  padding: const EdgeInsets.only(top: 14.0),
-                                  child: Text(
-                                    "Customizations Availbale" ,
-                                    style: TextStyle(
-                                        color: AppCommonColors.selectedcolor,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 12),
-                                  ),
-                                ):Padding(padding: const EdgeInsets.only(top: 0)),
-                              ],
-                            ),
+                                        )
+                                      : Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 0)),
+                                ],
+                              ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left:0.0),
+                              padding: const EdgeInsets.only(left: 0.0),
                               child: CachedNetworkImage(
-                                imageUrl: model.newcategoryDishes[index].dishImage,
+                                imageUrl:
+                                    model.newcategoryDishes[index].dishImage,
                                 height: 20,
                                 width: 80,
                                 // placeholder:
                                 //     (context, url) =>
                                 // Container(height:20,width:20,child: new CircularProgressIndicator()),
-                                errorWidget: (context, url, error) => Container(child: Text("Loading Failed",style: TextStyle(color: AppCommonColors.selectedcolor,fontSize: 12),),),
+                                errorWidget: (context, url, error) => Container(
+                                  child: Text(
+                                    "Loading Failed",
+                                    style: TextStyle(
+                                        color: AppCommonColors.selectedcolor,
+                                        fontSize: 12),
+                                  ),
+                                ),
                               ),
                             )
                           ],
