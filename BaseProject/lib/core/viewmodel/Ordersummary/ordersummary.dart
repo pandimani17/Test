@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:newproject/core/data/api_model/dishesreponsemodel/dishesresponsemodel.dart';
 import 'package:stacked/stacked.dart';
@@ -59,4 +60,28 @@ class ordersummaryviewmodel extends BaseViewModel {
     }
     notifyListeners();
   }
+
+  PlaceOrder(BuildContext context) async {
+    for (int i = 0; i < tablemenulist.tableMenuList.length; i++) {
+      for (int j = 0;
+          j < tablemenulist.tableMenuList[i].categoryDishes.length;
+          j++) {
+        for (int k = 0; k < newcategoryDishes.length; k++) {
+          if (tablemenulist.tableMenuList[i].categoryDishes[j].dishId ==
+              newcategoryDishes[k].dishId) {
+            tablemenulist.tableMenuList[i].categoryDishes.removeWhere(
+                (CategoryDishes) =>
+                    CategoryDishes.dishId == newcategoryDishes[k].dishId);
+          }
+        }
+      }
+    }
+    String dishes = jsonEncode(tablemenulist);
+    await pref.write(key: 'tablemenulist', value: dishes);
+    notifyListeners();
+    Navigator.of(context).pop();
+  }
+
+  // chathistory.removeWhere(
+  //         (ChatHistoryResponse) => ChatHistoryResponse.id == idd);
 }

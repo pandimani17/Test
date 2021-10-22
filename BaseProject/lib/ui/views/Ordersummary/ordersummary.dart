@@ -224,7 +224,7 @@ class ordersummarylayout extends ViewModelWidget<ordersummaryviewmodel> {
                                                   color: Colors.white,
                                                 ),
                                                 onTap: () {
-                                                  // model.additem(indexx, index)();
+                                                  // viewModel.additem(index)();
                                                 },
                                               ),
                                             ],
@@ -298,8 +298,116 @@ class ordersummarylayout extends ViewModelWidget<ordersummaryviewmodel> {
                 ),
               ),
               color: AppCommonColors.Darkgreen,
-              onPressed: (AnimationController controller) async {},
+              onPressed: (AnimationController controller) async {
+                MangementDeletePopup(context, viewModel);
+              },
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void MangementDeletePopup(BuildContext context, ordersummaryviewmodel model) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            child: contentDeleteBox(context, model),
+          );
+        });
+  }
+
+  contentDeleteBox(context, ordersummaryviewmodel model) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(left: 20, top: 65, right: 20, bottom: 20),
+          margin: EdgeInsets.only(top: 45),
+          decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey, offset: Offset(0, 3), blurRadius: 2),
+              ]),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Confrim Your Order',
+                style: TextStyle(
+                    color: AppCommonColors.Darkgreen,
+                    fontSize: 18,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              // isclickDelete == true
+              Container(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FlatButton(
+                      onPressed: () => {
+                        Navigator.of(context).pop(),
+                        model.PlaceOrder(context)
+                      },
+                      textColor: Colors.green,
+                      color: Colors.white,
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          ),
+                          Text('Ok',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w700)),
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: new BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              )
+            ],
+          ),
+        ),
+        Positioned(
+          left: 20,
+          right: 20,
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            radius: 45,
+            child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(45)),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Image.asset(
+                    "assets/images/popup_close.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                )),
           ),
         ),
       ],
