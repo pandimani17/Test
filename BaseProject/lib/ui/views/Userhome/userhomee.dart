@@ -39,12 +39,24 @@ class _userhomeeState extends State<userhomee>
 class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
   TabController tanc;
   AppMainLayout(this.tanc);
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context, userhomeviewmodel viewModel) {
     return DefaultTabController(
         length: 6,
         child: Scaffold(
+          key: _scaffoldKey,
           appBar: AppBar(
+            leading: IconButton(
+              icon: new Icon(
+                Icons.menu,
+                color: AppCommonColors.myCustomBlack,
+              ),
+              onPressed: () {
+                _scaffoldKey.currentState.openDrawer();
+              },
+            ),
             backgroundColor: AppCommonColors.white,
             actions: [
               IconButton(
@@ -157,6 +169,29 @@ class AppMainLayout extends ViewModelWidget<userhomeviewmodel> {
                             : AppCommonColors.unselectedcolor),
                   ),
                 )
+              ],
+            ),
+          ),
+          drawer: Drawer(
+            child: ListView(
+              children: <Widget>[
+                UserAccountsDrawerHeader(
+                  accountName: Text("Muhammad Naseem"),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor:
+                        Theme.of(context).platform == TargetPlatform.iOS
+                            ? Colors.green
+                            : Colors.white,
+                    child: Text(
+                      "M",
+                      style: TextStyle(fontSize: 40.0),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text("Logout"),
+                  leading: Icon(Icons.logout),
+                ),
               ],
             ),
           ),
